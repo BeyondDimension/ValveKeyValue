@@ -4,7 +4,7 @@ using System.Diagnostics;
 namespace ValveKeyValue
 {
     [DebuggerDisplay("{value}")]
-    class KVObjectValue<TObject> : KVValue
+    public class KVObjectValue<TObject> : KVValue
         where TObject : IConvertible
     {
         public KVObjectValue(TObject value, KVValueType valueType)
@@ -18,7 +18,13 @@ namespace ValveKeyValue
             ValueType = valueType;
         }
 
-        readonly TObject value;
+        TObject value;
+
+        public TObject Value
+        {
+            get => value;
+            set => this.value = value;
+        }
 
         public override KVValueType ValueType { get; }
 
