@@ -88,6 +88,27 @@ namespace ValveKeyValue
         }
 
         /// <summary>
+        /// Set a <see cref="KVObject" /> as a child of the current object.
+        /// </summary>
+        /// <param name="value">The child to set.</param>
+        public void Set(string name, KVValue value)
+        {
+            Require.NotNull(name, nameof(name));
+            Require.NotNull(value, nameof(value));
+            GetCollectionValue().Set(name, value);
+        }
+
+        /// <summary>
+        /// Remove a <see cref="KVObject" /> as a child of the current object.
+        /// </summary>
+        /// <param name="value">The child to remove.</param>
+        public void Remove(string name)
+        {
+            Require.NotNull(name, nameof(name));
+            GetCollectionValue().Remove(name);
+        }
+
+        /// <summary>
         /// Gets the children of this <see cref="KVObject"/>.
         /// </summary>
         public IEnumerable<KVObject> Children => (Value as KVCollectionValue) ?? Enumerable.Empty<KVObject>();

@@ -5,11 +5,16 @@ using System.Linq;
 
 namespace ValveKeyValue
 {
-    class KVCollectionValue : KVValue, IEnumerable<KVObject>
+    public class KVCollectionValue : KVValue, IEnumerable<KVObject>
     {
         public KVCollectionValue()
         {
             children = new List<KVObject>();
+        }
+
+        public KVCollectionValue(IEnumerable<KVObject> ks)
+        {
+            children = ks.ToList();
         }
 
         readonly List<KVObject> children;
@@ -50,6 +55,13 @@ namespace ValveKeyValue
 
             children.RemoveAll(kv => kv.Name == name);
             children.Add(new KVObject(name, value));
+        }
+
+        public void Remove(string name)
+        {
+            Require.NotNull(name, nameof(name));
+
+            children.RemoveAll(kv => kv.Name == name);
         }
 
         #region IEnumerable<KVObject>
