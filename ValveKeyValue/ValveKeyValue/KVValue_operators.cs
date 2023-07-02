@@ -77,7 +77,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator bool(KVValue value)
         {
-            return value.ToBoolean(null);
+            return value?.ToBoolean(null) ?? false;
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator byte(KVValue value)
         {
-            return value.ToByte(null);
+            return value?.ToByte(null) ?? new byte();
         }
 
         /// <summary>
@@ -95,7 +95,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator char(KVValue value)
         {
-            return value.ToChar(null);
+            return value?.ToChar(null) ?? new char();
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator decimal(KVValue value)
         {
-            return value.ToDecimal(null);
+            return value?.ToDecimal(null) ?? 0;
         }
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator double(KVValue value)
         {
-            return value.ToDouble(null);
+            return value?.ToDouble(null) ?? 0;
         }
 
         /// <summary>
@@ -122,7 +122,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator float(KVValue value)
         {
-            return value.ToSingle(null);
+            return value?.ToSingle(null) ?? 0;
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator int(KVValue value)
         {
-            return value.ToInt32(null);
+            return value?.ToInt32(null) ?? 0;
         }
 
         /// <summary>
@@ -140,7 +140,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator long(KVValue value)
         {
-            return value.ToInt64(null);
+            return value?.ToInt64(null) ?? 0;
         }
 
         /// <summary>
@@ -149,7 +149,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator sbyte(KVValue value)
         {
-            return value.ToSByte(null);
+            return value?.ToSByte(null) ?? new sbyte();
         }
 
         /// <summary>
@@ -158,7 +158,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator short(KVValue value)
         {
-            return value.ToInt16(null);
+            return value?.ToInt16(null) ?? 0;
         }
 
         /// <summary>
@@ -167,7 +167,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator uint(KVValue value)
         {
-            return value.ToUInt32(null);
+            return value?.ToUInt32(null) ?? 0;
         }
 
         /// <summary>
@@ -176,7 +176,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator ulong(KVValue value)
         {
-            return value.ToUInt64(null);
+            return value?.ToUInt64(null) ?? 0;
         }
 
         /// <summary>
@@ -185,7 +185,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator ushort(KVValue value)
         {
-            return value.ToUInt16(null);
+            return value?.ToUInt16(null) ?? 0;
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace ValveKeyValue
         /// <param name="value">The <see cref="KVValue"/> to convert.</param>
         public static explicit operator IntPtr(KVValue value)
         {
-            return new IntPtr(value.ToInt32(null));
+            return value is null ? new IntPtr(0) : new IntPtr(value.ToInt32(null));
         }
     }
 }
