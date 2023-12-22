@@ -256,6 +256,10 @@ namespace ValveKeyValue.Deserialization.KeyValues1
 
         static KVValue ParseValue(string text)
         {
+            if (text.Length > 1 && text.StartsWith("0"))
+            {
+                return new KVObjectValue<string>(text, KVValueType.String);
+            }
             // "0x" + 2 digits per byte. Long is 8 bytes, so s + 16 = 18.
             // Expressed this way for readability, rather than using a magic value.
             const int HexStringLengthForUnsignedLong = 2 + sizeof(long) * 2;
